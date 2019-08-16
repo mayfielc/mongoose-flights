@@ -14,9 +14,11 @@ var flightSchema = new Schema ({
     departs: {
         type: Date,
         default: function () {
-            return new Date().getFullYear();
+            var oneYLater = new Date();
+            oneYLater.setFullYear(oneYLater.setFullYear() + 1);
+            return oneYLater.toLocaleDateString();
         }
-    },
+    }
 }, {
     timestamps: true
 });
