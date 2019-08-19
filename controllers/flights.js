@@ -3,7 +3,8 @@ var Flight = require('../models/flight');
 module.exports = {
     indexView,
     create,
-    newView
+    newView,
+    showView
 };
 
 
@@ -14,6 +15,9 @@ function indexView(req, res) {
 };
 
     function create(req, res) {
+        for (let key in req.body) {
+            if (req.body[key] === '') delete req.body[key];
+        }
         var flight = new Flight(req.body);
         flight.save(function(err) {
             if (err) return res.redirect('/flights/new');
@@ -21,6 +25,15 @@ function indexView(req, res) {
         });
     };
 
-    function newView() {
+    function newView(req, res) {
         res.render('flights/new', {title: 'Add Flight'});
+    };
+
+    function showView(req, res) {
+        Flight.findById(req.params.id, function (err, flight) {
+            res.render('flights/show', {
+                title: "Flight Details",
+                flight
+            })
+        })
     }

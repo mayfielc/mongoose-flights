@@ -27,7 +27,7 @@ var flightSchema = new Schema ({
         type: Date,
         default: function () {
             var oneYLater = new Date();
-            oneYLater.setFullYear(oneYLater.setFullYear() + 1);
+            oneYLater.setFullYear(oneYLater.getFullYear() + 1);
             return oneYLater.toLocaleDateString();
         }
     },
