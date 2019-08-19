@@ -15,11 +15,12 @@
         <td><%= f.airline %></td>
         <td><%= f.flightNo %></td>
         <td><%= f.departs %></td>
+        <td><a href="/flights/<% f._id %>">DETAILS</a></td>
       </tr>
       <% }); %>
     </tbody>
   </table>
   </body>
 
-  <%- ('../partials/footer') %>
-</html>
+  </html>
+ <%- include('../partials/footer') %>
